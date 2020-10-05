@@ -1,3 +1,5 @@
+package it.unive.po1.car;
+
 public class Car {
     double speed;
     double fuel;
