@@ -26,7 +26,6 @@ public class Bicycle extends Vehicle{
         return rearTirePressure;
     }
     public void accelerate(double dv){
-        if(dv>=0)
-            speed += dv;
+        super.accelerate(dv);
     }
 }

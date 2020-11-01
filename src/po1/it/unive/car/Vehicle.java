@@ -4,7 +4,7 @@ package po1.it.unive.car;
  * Class @code Vehicle represents a vehicle
  */
 public abstract class Vehicle {
-    protected double speed;
+    private double speed;
     // Constructors
     /**
      * It initializes the vehicle with a given speed
@@ -47,6 +47,11 @@ public abstract class Vehicle {
      * Modify speed adding a given dv
      * @param dv speed to be added to speed field
      */
-    abstract protected void accelerate(double dv);
+    protected void accelerate(double dv){
+        if(dv>=0)
+            this.speed = dv;
+        else
+            this.speed = 0;
+    }
 
 }

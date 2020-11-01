@@ -155,11 +155,9 @@ public class Car extends Vehicle{
      * @param dv amount of speed to be added
      */
     public void accelerate(double dv) {
-       if(dv<0)
-           return;
         double consumption = dv*fuelType.getFUEL_CONS();
         if(consumption <= fuel){
-            super.setSpeed(super.getSpeed() +dv);
+            super.accelerate(dv);
             fuel -= dv*consumption;
         }
         else{
@@ -176,7 +174,7 @@ public class Car extends Vehicle{
      */
     public boolean isFuelEmpty() {
         if(fuel <= 0) {
-            super.speed = super.speed * 0.90;
+            super.setSpeed(super.getSpeed() * 0.90);
             return true;
         }
         else return false;
