@@ -1,6 +1,6 @@
 package po1.it.unive.polygon;
 
-public class Rectangle {
+public class Rectangle extends Quadrilateral {
     public int edge1Length;
     public int edge2Length;
 
