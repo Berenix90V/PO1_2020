@@ -10,8 +10,16 @@ public class FuelType{
     private static int numberOfTypes = 0;
     private final int id;
 
-    // static blocks
-    private static Map<String, FuelType> alreadyCreatedFuelTypes = new HashMap<>();
+    /**
+     * Creates and returns a fuel type. If a fuel type with the given name was previously created,
+     * the method returns the existing instance (with the cost per liter and fuel consumption set
+     * when this was created). Otherwise, it creates and returns a new fuel type caching it.
+     *
+     * @param name the name of the fuel type
+     * @param costPerLiter the cost of one liter of fuel of this type
+     * @param FUEL_CONS the consumption (km/l)
+     * @return an instance of fuel type with the given name
+     */
     static public FuelType createFuelType(String name, double costPerLiter, double FUEL_CONS){
         FuelType result = FuelTypeCache.getFuelTypeFromName(name);
         if(result==null) {

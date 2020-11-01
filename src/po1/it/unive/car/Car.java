@@ -149,12 +149,17 @@ public class Car extends Vehicle{
 
     }
 
+    public void refuel(double amount)
+    {
+        fuel += amount;
+    }
+
     /**
      * If there's enough fuel accelerate of a given amount dv, else accelerate 'til there's fuel
      *
      * @param dv amount of speed to be added
      */
-    public void accelerate(double dv) {
+    final public void accelerate(double dv) {
         double consumption = dv*fuelType.getFUEL_CONS();
         if(consumption <= fuel){
             super.accelerate(dv);
