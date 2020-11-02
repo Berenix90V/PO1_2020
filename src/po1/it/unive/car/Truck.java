@@ -1,11 +1,12 @@
 package po1.it.unive.car;
 
 import po1.it.unive.car.fuel.FuelType;
+import po1.it.unive.vehicle.Loadable;
 
 /**
  * Class @code Truck represents a truck
  */
- public final class Truck extends Car {
+ public final class Truck extends Car implements Loadable {
     /**
      * Amount of load on the truck
      */

@@ -3,6 +3,8 @@ package po1.it.unive;
 import org.w3c.dom.css.Rect;
 import po1.it.unive.bicycle.Bicycle;
 import po1.it.unive.car.Truck;
+import po1.it.unive.vehicle.HorseCart;
+import po1.it.unive.vehicle.Loadable;
 import po1.it.unive.vehicle.Vehicle;
 import po1.it.unive.car.Car;
 import po1.it.unive.car.fuel.FuelTank;
@@ -20,6 +22,12 @@ public class Main {
     private static String getStringPer(Quadrilateral q){
         return "The perimeter is "+q.getPerimeter();
     }
+
+    static void splitLoad(double load, Loadable[] v) {
+        for(int i = 0; i < v.length; i++)
+            v[i].chargeLoad(load/v.length);
+    }
+
     public static void main(String[] args) throws Exception {
 
         /*FuelType diesel = FuelType.createFuelType("diesel", 1.3, 0.3);
@@ -62,12 +70,19 @@ public class Main {
         */
 
         // RACING
-        FuelType diesel = FuelType.createFuelType("diesel", 1.3, 0.3);
+
+       /* FuelType diesel = FuelType.createFuelType("diesel", 1.3, 0.3);
+        FuelTank tank1 = new FuelTank(diesel, 20);
+        Vehicle v = new Car(0, diesel, 10);
+
+        Car c = (Car) v;
+        c.refuel(tank1);
+
         Racing.race(new Car(0, diesel, 10 ), new Car(0, diesel, 10 ), 100);
         Racing.race(new Truck(0, diesel, 10 ), new Truck(0, diesel, 10 ), 100);
         Racing.race(new Bicycle(0,2,2), new Bicycle(0,2,2), 100);
         Racing.race(new Car(0, diesel, 10 ), new Truck(0, diesel, 10 ), 100);
-
+*/
         //POLYGONS
        /* Rectangle rect = new Rectangle(2,3);
         System.out.println(getStringArea(rect));
@@ -78,6 +93,23 @@ public class Main {
 
         Rhombus rhom = new Rhombus(3,4, 5);
         System.out.println(getStringArea(rhom));*/
+
+        // CASTING
+        FuelType diesel = FuelType.createFuelType("diesel", 1.3, 0.3);
+        FuelTank tank1 = new FuelTank(diesel, 20);
+        Vehicle v = null;
+        if(Math.random()>0.5)
+            v = new Car(0, diesel, 10);
+        else v = new Bicycle(0, 1, 1);
+        if(v instanceof Car)
+            ((Car) v).refuel(10);
+        HorseCart cart = new HorseCart(0);
+        Truck truck = new Truck(100, diesel, 10);
+
+        Loadable[] loadables = new Loadable[2];
+        loadables[0]=cart;
+        loadables[1] = truck;
+        splitLoad(1000, loadables);
 
     }
 }
