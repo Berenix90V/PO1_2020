@@ -1,12 +1,13 @@
 package po1.it.unive.car;
 
+import po1.it.unive.vehicle.Vehicle;
 import po1.it.unive.car.fuel.FuelTank;
 import po1.it.unive.car.fuel.FuelType;
 
 /**
  * Class @code Car represents a car
  */
-public class Car extends Vehicle{
+public class Car extends Vehicle {
 
     /**
      * Amount of fuel in the car
@@ -195,13 +196,6 @@ public class Car extends Vehicle{
         this.accelerate(a);
     }
 
-    /**
-     * Make the car stop
-     *
-     */
-    public void fullBreak() {
-        super.setSpeed(0);
-    }
 
 
 }

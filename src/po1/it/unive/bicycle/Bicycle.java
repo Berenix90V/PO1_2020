@@ -1,6 +1,6 @@
 package po1.it.unive.bicycle;
 
-import po1.it.unive.car.Vehicle;
+import po1.it.unive.vehicle.Vehicle;
 
 public class Bicycle extends Vehicle{
 

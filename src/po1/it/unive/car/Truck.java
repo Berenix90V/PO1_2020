@@ -5,7 +5,7 @@ import po1.it.unive.car.fuel.FuelType;
 /**
  * Class @code Truck represents a truck
  */
-final class Truck extends Car {
+ public final class Truck extends Car {
     /**
      * Amount of load on the truck
      */

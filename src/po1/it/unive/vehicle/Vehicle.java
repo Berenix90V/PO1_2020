@@ -1,4 +1,4 @@
-package po1.it.unive.car;
+package po1.it.unive.vehicle;
 
 /**
  * Class @code Vehicle represents a vehicle
@@ -53,5 +53,14 @@ public abstract class Vehicle {
         else
             this.speed = 0;
     }
+
+    /**
+     * Make the car stop
+     *
+     */
+    public void fullBreak() {
+        setSpeed(0);
+    }
+
 
 }

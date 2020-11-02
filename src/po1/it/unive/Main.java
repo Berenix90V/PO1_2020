@@ -1,6 +1,9 @@
 package po1.it.unive;
 
 import org.w3c.dom.css.Rect;
+import po1.it.unive.bicycle.Bicycle;
+import po1.it.unive.car.Truck;
+import po1.it.unive.vehicle.Vehicle;
 import po1.it.unive.car.Car;
 import po1.it.unive.car.fuel.FuelTank;
 import po1.it.unive.car.fuel.FuelType;
@@ -8,6 +11,7 @@ import po1.it.unive.polygon.Quadrilateral;
 import po1.it.unive.polygon.Rectangle;
 import po1.it.unive.polygon.Rhombus;
 import po1.it.unive.polygon.Square;
+import po1.it.unive.vehicle.Racing;
 
 public class Main {
     private static String getStringArea(Quadrilateral q){
@@ -57,8 +61,15 @@ public class Main {
         System.out.println(c);
         */
 
+        // RACING
+        FuelType diesel = FuelType.createFuelType("diesel", 1.3, 0.3);
+        Racing.race(new Car(0, diesel, 10 ), new Car(0, diesel, 10 ), 100);
+        Racing.race(new Truck(0, diesel, 10 ), new Truck(0, diesel, 10 ), 100);
+        Racing.race(new Bicycle(0,2,2), new Bicycle(0,2,2), 100);
+        Racing.race(new Car(0, diesel, 10 ), new Truck(0, diesel, 10 ), 100);
+
         //POLYGONS
-        Rectangle rect = new Rectangle(2,3);
+       /* Rectangle rect = new Rectangle(2,3);
         System.out.println(getStringArea(rect));
 
         Square square = new Square(3);
@@ -66,6 +77,7 @@ public class Main {
         System.out.println(getStringPer(square));
 
         Rhombus rhom = new Rhombus(3,4, 5);
-        System.out.println(getStringArea(rhom));
+        System.out.println(getStringArea(rhom));*/
+
     }
 }
