@@ -140,7 +140,7 @@ public class Car extends Vehicle{
      * @param tank tank to be used to refuel
      *
      */
-    void refuel(FuelTank tank) {
+    public void refuel(FuelTank tank) {
         if(! tank.getFuelType().equals(fuelType))return;
         else{
             fuel += tank.getAmount();
@@ -199,7 +199,7 @@ public class Car extends Vehicle{
      * Make the car stop
      *
      */
-    void fullBreak() {
+    public void fullBreak() {
         super.setSpeed(0);
     }
 

@@ -1,11 +1,24 @@
-package po1.it.unive.car;
+package po1.it.unive;
 
+import org.w3c.dom.css.Rect;
+import po1.it.unive.car.Car;
 import po1.it.unive.car.fuel.FuelTank;
 import po1.it.unive.car.fuel.FuelType;
+import po1.it.unive.polygon.Quadrilateral;
+import po1.it.unive.polygon.Rectangle;
+import po1.it.unive.polygon.Rhombus;
+import po1.it.unive.polygon.Square;
 
 public class Main {
+    private static String getStringArea(Quadrilateral q){
+        return "The area is "+q.getArea();
+    }
+    private static String getStringPer(Quadrilateral q){
+        return "The perimeter is "+q.getPerimeter();
+    }
     public static void main(String[] args) throws Exception {
-        FuelType diesel = FuelType.createFuelType("diesel", 1.3, 0.3);
+
+        /*FuelType diesel = FuelType.createFuelType("diesel", 1.3, 0.3);
         FuelType benzina = FuelType.createFuelType("benzina", 1.6, 0.9);
         FuelTank myTank = new FuelTank(diesel, 10);
         myTank.setAmount(34.5);
@@ -24,7 +37,7 @@ public class Main {
         yourTank.setAmount(34.5);
         yourCar.refuel(yourTank);
         //System.out.println(yourTank.tankId);
-        FuelTank.resetTanksCount();
+        FuelTank.resetTanksCount();*/
 
         // Es. 2.3
         /*
@@ -44,7 +57,15 @@ public class Main {
         System.out.println(c);
         */
 
+        //POLYGONS
+        Rectangle rect = new Rectangle(2,3);
+        System.out.println(getStringArea(rect));
 
+        Square square = new Square(3);
+        System.out.println(getStringArea(square));
+        System.out.println(getStringPer(square));
 
+        Rhombus rhom = new Rhombus(3,4, 5);
+        System.out.println(getStringArea(rhom));
     }
 }
