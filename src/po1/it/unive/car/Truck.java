@@ -1,12 +1,14 @@
 package po1.it.unive.car;
 
+import po1.it.unive.Printable;
 import po1.it.unive.car.fuel.FuelType;
 import po1.it.unive.vehicle.Loadable;
+import po1.it.unive.vehicle.LoadableUnloadable;
 
 /**
  * Class @code Truck represents a truck
  */
- public final class Truck extends Car implements Loadable {
+ public final class Truck extends Car implements LoadableUnloadable, Printable {
     /**
      * Amount of load on the truck
      */
@@ -48,5 +50,23 @@ import po1.it.unive.vehicle.Loadable;
      */
     public void chargeLoad(double load){
         this.load += load;
+    }
+
+    @Override
+    public double getMaxLoad() {
+        return 3000;
+    }
+
+    @Override
+    public void print() {
+        System.out.print("This is a truck with "+load+" ksg, at speed "+this.getSpeed());
+    }
+
+    @Override
+    public void unchargeLoad(double l) {
+        if(load>=l){
+            load -= l;
+        }
+        else load = 0;
     }
 }

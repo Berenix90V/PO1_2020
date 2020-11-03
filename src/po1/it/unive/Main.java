@@ -2,10 +2,9 @@ package po1.it.unive;
 
 import org.w3c.dom.css.Rect;
 import po1.it.unive.bicycle.Bicycle;
+import po1.it.unive.car.LinkedList;
 import po1.it.unive.car.Truck;
-import po1.it.unive.vehicle.HorseCart;
-import po1.it.unive.vehicle.Loadable;
-import po1.it.unive.vehicle.Vehicle;
+import po1.it.unive.vehicle.*;
 import po1.it.unive.car.Car;
 import po1.it.unive.car.fuel.FuelTank;
 import po1.it.unive.car.fuel.FuelType;
@@ -13,7 +12,6 @@ import po1.it.unive.polygon.Quadrilateral;
 import po1.it.unive.polygon.Rectangle;
 import po1.it.unive.polygon.Rhombus;
 import po1.it.unive.polygon.Square;
-import po1.it.unive.vehicle.Racing;
 
 public class Main {
     private static String getStringArea(Quadrilateral q){
@@ -27,10 +25,36 @@ public class Main {
         for(int i = 0; i < v.length; i++)
             v[i].chargeLoad(load/v.length);
     }
+    private static void printAll(Printable[] printables){
+        for(int i=0; i<printables.length; i++)
+            printables[i].print();
+    }
+    // main da esercizi sul libro
+    public void cap2(){
+        // Es. 2.3
+        FuelType diesel = FuelType.createFuelType("diesel", 1.3, 0.3);
+        Car myCar = new Car(0, diesel, 20);
+        Car yourCar = new Car(0, diesel, 20);
+        int yourId = yourCar.getId();
+        System.out.println(yourId);
 
-    public static void main(String[] args) throws Exception {
+        // Es. LinkedList 2.16
 
-        /*FuelType diesel = FuelType.createFuelType("diesel", 1.3, 0.3);
+        Car theirCar = new Car(0, diesel, 20);
+        LinkedList myList = new LinkedList(myCar);
+        LinkedList yourList = new LinkedList(yourCar);
+        myList.setNext(yourList);
+        LinkedList theirList = new LinkedList(theirCar);
+        yourList.setNext(theirList);
+
+        int c = myList.count_items();
+        System.out.println(c);
+
+    }
+
+    // vari main usati finora in classe
+    public static void cars(){
+        FuelType diesel = FuelType.createFuelType("diesel", 1.3, 0.3);
         FuelType benzina = FuelType.createFuelType("benzina", 1.6, 0.9);
         FuelTank myTank = new FuelTank(diesel, 10);
         myTank.setAmount(34.5);
@@ -49,29 +73,21 @@ public class Main {
         yourTank.setAmount(34.5);
         yourCar.refuel(yourTank);
         //System.out.println(yourTank.tankId);
-        FuelTank.resetTanksCount();*/
+        FuelTank.resetTanksCount();
+    }
+    public static void polygons(){
+        Rectangle rect = new Rectangle(2,3);
+        System.out.println(getStringArea(rect));
 
-        // Es. 2.3
-        /*
-        int yourId = yourCar.getId();
-        System.out.println(yourId);
-        */
-        // Es. LinkedList 2.16
-        /*
-        Car theirCar = new Car();
-        LinkedList myList = new LinkedList(myCar);
-        LinkedList yourList = new LinkedList(yourCar);
-        myList.setNext(yourList);
-        LinkedList theirList = new LinkedList(theirCar);
-        yourList.setNext(theirList);
+        Square square = new Square(3);
+        System.out.println(getStringArea(square));
+        System.out.println(getStringPer(square));
 
-        int c = myList.count_items();
-        System.out.println(c);
-        */
-
-        // RACING
-
-       /* FuelType diesel = FuelType.createFuelType("diesel", 1.3, 0.3);
+        Rhombus rhom = new Rhombus(3,4, 5);
+        System.out.println(getStringArea(rhom));
+    }
+    public static void racing(){
+        FuelType diesel = FuelType.createFuelType("diesel", 1.3, 0.3);
         FuelTank tank1 = new FuelTank(diesel, 20);
         Vehicle v = new Car(0, diesel, 10);
 
@@ -82,19 +98,8 @@ public class Main {
         Racing.race(new Truck(0, diesel, 10 ), new Truck(0, diesel, 10 ), 100);
         Racing.race(new Bicycle(0,2,2), new Bicycle(0,2,2), 100);
         Racing.race(new Car(0, diesel, 10 ), new Truck(0, diesel, 10 ), 100);
-*/
-        //POLYGONS
-       /* Rectangle rect = new Rectangle(2,3);
-        System.out.println(getStringArea(rect));
-
-        Square square = new Square(3);
-        System.out.println(getStringArea(square));
-        System.out.println(getStringPer(square));
-
-        Rhombus rhom = new Rhombus(3,4, 5);
-        System.out.println(getStringArea(rhom));*/
-
-        // CASTING
+    }
+    public static void casting(){
         FuelType diesel = FuelType.createFuelType("diesel", 1.3, 0.3);
         FuelTank tank1 = new FuelTank(diesel, 20);
         Vehicle v = null;
@@ -110,6 +115,18 @@ public class Main {
         loadables[0]=cart;
         loadables[1] = truck;
         splitLoad(1000, loadables);
+    }
 
+    public static void main(String[] args) throws Exception {
+        FuelType diesel = FuelType.createFuelType("diesel", 1.3, 0.3);
+
+        Printable[] printables = new Printable[2];
+        printables[0] = new Truck(100, diesel, 10);
+        ((Truck) printables[0]).chargeLoad(10);
+        printables[1] = new Square(3);
+        printAll(printables);
+
+        Truck truck = new Truck(0, diesel, 20);
+        LoadableUnloadable obj = truck;
     }
 }

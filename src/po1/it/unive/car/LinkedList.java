@@ -5,7 +5,7 @@ public class LinkedList {
     private Object item;
     LinkedList next;
     // Es.2.8
-    LinkedList (Object car) {
+    public LinkedList(Object car) {
         this.item = car;
     }
     public void setNext(LinkedList next){
