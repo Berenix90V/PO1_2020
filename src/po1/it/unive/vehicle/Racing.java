@@ -1,5 +1,7 @@
 package po1.it.unive.vehicle;
 
+import po1.it.unive.car.Car;
+
 public class Racing {
     static public int race(Vehicle v1, Vehicle v2, double length) {
         v1.fullBreak();
@@ -16,5 +18,14 @@ public class Racing {
             v1.accelerate(Math.random()*10);
             v2.accelerate(Math.random()*10);
         }
+    }
+    static public int race(Vehicle v1, Car v2, double length){
+        return  0;
+    }
+    static public int race(Car v1, Vehicle v2, double length){
+        return  0;
+    }
+    static public int race(Car v1, Car v2, double length){
+        return 0;
     }
 }

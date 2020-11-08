@@ -13,6 +13,8 @@ import po1.it.unive.polygon.Rectangle;
 import po1.it.unive.polygon.Rhombus;
 import po1.it.unive.polygon.Square;
 
+import java.util.AbstractSet;
+
 public class Main {
     private static String getStringArea(Quadrilateral q){
         return "The area is "+q.getArea();
@@ -116,8 +118,7 @@ public class Main {
         loadables[1] = truck;
         splitLoad(1000, loadables);
     }
-
-    public static void main(String[] args) throws Exception {
+    public static void interfaces(){
         FuelType diesel = FuelType.createFuelType("diesel", 1.3, 0.3);
 
         Printable[] printables = new Printable[2];
@@ -128,5 +129,36 @@ public class Main {
 
         Truck truck = new Truck(0, diesel, 20);
         LoadableUnloadable obj = truck;
+    }
+
+    public static void main(String[] args) throws Exception {
+
+        FuelType diesel = FuelType.createFuelType("diesel", 1.3, 0.03);
+        Vehicle v1 = new Car(20, diesel,300);
+        Vehicle v4 = new Car(10, diesel,100);
+        Vehicle v2 = new Truck(10, diesel,10);
+        Vehicle v3 = new HorseCart(10);
+        Vehicle v5=v1;
+        Vehicle v6 = v2;
+        //v1.accelerate(10);
+        /*Racing.race(v1,v2,100);
+        Racing.race(v3,v2,100);
+        Racing.race(v1,v3,100);*/
+
+        Racing common_race = new Racing();
+        common_race.race(v1, v4, 100);
+        common_race.race(new Car(10,diesel,10), new Bicycle(10,2,2), 100);
+        common_race.race(new Bicycle(10,2,2), new Car(10,diesel,10),100);
+        common_race.race(new Bicycle(10,2,2), new Bicycle(10,2,2), 100);
+
+        common_race.race(v1,v4,100);
+        common_race.race(v1,v2,100);
+
+        Car.foo();
+        Vehicle.foo();
+        v1.foo();
+
+
+
     }
 }

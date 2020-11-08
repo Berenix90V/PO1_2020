@@ -196,6 +196,9 @@ public class Car extends Vehicle {
         this.accelerate(a);
     }
 
+    public static void foo() {
+        System.out.println("Vehicle 2");
+    }
 
 
 }

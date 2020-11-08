@@ -47,7 +47,7 @@ public abstract class Vehicle {
      * Modify speed adding a given dv
      * @param dv speed to be added to speed field
      */
-    protected void accelerate(double dv){
+    public void accelerate(double dv){
         if(dv>=0)
             this.speed = dv;
         else
@@ -60,6 +60,10 @@ public abstract class Vehicle {
      */
     public void fullBreak() {
         setSpeed(0);
+    }
+
+    public static void foo() {
+        System.out.println("Vehicle 1");
     }
 
 
