@@ -4,6 +4,8 @@ import po1.it.unive.vehicle.Vehicle;
 import po1.it.unive.car.fuel.FuelTank;
 import po1.it.unive.car.fuel.FuelType;
 
+import java.util.Objects;
+
 /**
  * Class @code Car represents a car
  */
@@ -199,6 +201,5 @@ public class Car extends Vehicle {
     public static void foo() {
         System.out.println("Vehicle 2");
     }
-
 
 }

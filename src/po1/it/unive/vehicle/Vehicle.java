@@ -1,10 +1,14 @@
 package po1.it.unive.vehicle;
 
+import po1.it.unive.car.Car;
+
+import java.util.Objects;
+
 /**
  * Class @code Vehicle represents a vehicle
  */
-public abstract class Vehicle {
-    private double speed;
+public class Vehicle implements Comparable <Vehicle> {
+    protected double speed;
     // Constructors
     /**
      * It initializes the vehicle with a given speed
@@ -66,5 +70,28 @@ public abstract class Vehicle {
         System.out.println("Vehicle 1");
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null ) return false;
+        if(!(o instanceof Vehicle))
+            return false;
+        Vehicle vehicle = (Vehicle) o;
+        return vehicle.speed == speed;
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(speed);
+    }
+
+    @Override
+    public int compareTo(Vehicle o) {
+        if (this.equals(o)) return 0;
+        if(o==null || getClass()!= o.getClass())
+            return 1;
+        if(o instanceof Car)
+            return 1;
+        return (int) (this.speed-o.speed);
+    }
 }

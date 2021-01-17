@@ -1,5 +1,7 @@
 package po1.it.unive.vehicle;
 
+import po1.it.unive.car.Car;
+
 public class HorseCart extends Vehicle implements Loadable{
     private double load;
     private double maxLoad = 100;
@@ -19,11 +21,14 @@ public class HorseCart extends Vehicle implements Loadable{
 
     @Override
     public void setLoad(double l) {
-
+        load = l;
     }
 
     @Override
     public double getLoad() {
-        return 0;
+        return load;
+    }
+    public HorseCart clone(){
+        return new HorseCart(super.speed);
     }
 }

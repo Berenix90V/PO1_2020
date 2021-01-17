@@ -14,6 +14,7 @@ import po1.it.unive.polygon.Rhombus;
 import po1.it.unive.polygon.Square;
 
 import java.util.AbstractSet;
+import java.util.TreeSet;
 
 public class Main {
     private static String getStringArea(Quadrilateral q){
@@ -130,9 +131,7 @@ public class Main {
         Truck truck = new Truck(0, diesel, 20);
         LoadableUnloadable obj = truck;
     }
-
-    public static void main(String[] args) throws Exception {
-
+    public static void dispatch(){
         FuelType diesel = FuelType.createFuelType("diesel", 1.3, 0.03);
         Vehicle v1 = new Car(20, diesel,300);
         Vehicle v4 = new Car(10, diesel,100);
@@ -157,7 +156,35 @@ public class Main {
         Car.foo();
         Vehicle.foo();
         v1.foo();
+    }
 
+    public static void main(String[] args) throws Exception {
+
+        FuelType diesel = FuelType.createFuelType("diesel", 1.3, 0.03);
+       /* Vehicle v1 = new Car(10, diesel,300);
+        Vehicle v4 = new Car(30, diesel,100);
+        Vehicle v2 = new Truck(30, diesel,10);
+        Vehicle v3 = new HorseCart(10);
+        boolean eq = v4.equals(v1);
+        boolean eq2 = v3.equals(v2);
+        */
+        Vehicle v1 = new Vehicle(10);
+        Vehicle v2 = new Vehicle(20);
+        Vehicle v3 = new Vehicle(30);
+        Vehicle v4 = new Vehicle(40);
+        Car c = new Car(20, diesel, 300);
+
+        System.out.println(v1.compareTo(v4));
+        System.out.println(c.compareTo(v3));
+        System.out.println(v3.compareTo(c));
+
+        TreeSet<Vehicle> set = new TreeSet <Vehicle>();
+        set.add(v1);
+        set.add(v2);
+        set.add(c);
+        for(Vehicle v:set){
+            System.out.println(v.getClass().getName() + " "+ v.getSpeed());
+        }
 
 
     }
