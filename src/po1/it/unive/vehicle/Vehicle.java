@@ -72,12 +72,17 @@ public class Vehicle implements Comparable <Vehicle> {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
+        if (this == o) return true; // se puntano allo stesso obj
         if (o == null ) return false;
         if(!(o instanceof Vehicle))
-            return false;
+            return false;           // sono 2 tipi diversi
         Vehicle vehicle = (Vehicle) o;
-        return vehicle.speed == speed;
+        return vehicle.speed == speed; // li confronto per fields (velocità)
+    }
+
+    @Override
+    public Vehicle clone() throws CloneNotSupportedException {
+        return new Vehicle(this.speed);
     }
 
     @Override

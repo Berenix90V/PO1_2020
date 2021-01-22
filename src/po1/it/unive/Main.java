@@ -13,8 +13,7 @@ import po1.it.unive.polygon.Rectangle;
 import po1.it.unive.polygon.Rhombus;
 import po1.it.unive.polygon.Square;
 
-import java.util.AbstractSet;
-import java.util.TreeSet;
+import java.util.*;
 
 public class Main {
     private static String getStringArea(Quadrilateral q){
@@ -161,19 +160,38 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
         FuelType diesel = FuelType.createFuelType("diesel", 1.3, 0.03);
-       /* Vehicle v1 = new Car(10, diesel,300);
-        Vehicle v4 = new Car(30, diesel,100);
-        Vehicle v2 = new Truck(30, diesel,10);
-        Vehicle v3 = new HorseCart(10);
-        boolean eq = v4.equals(v1);
-        boolean eq2 = v3.equals(v2);
-        */
-        Vehicle v1 = new Vehicle(10);
-        Vehicle v2 = new Vehicle(20);
-        Vehicle v3 = new Vehicle(30);
-        Vehicle v4 = new Vehicle(40);
-        Car c = new Car(20, diesel, 300);
+        Car v1 = new Car(10, diesel,10);
+        Car v2 = new Car(10, diesel,10);
+        Truck v3 = new Truck(10, diesel,10);
+        Vehicle v4 = new Vehicle(10);
+        Vehicle v5 = new Vehicle(20);
+        Vehicle v6 = new Vehicle(20);
+        boolean eq = v4.equals(v5);
+        boolean eq2 = v5.equals(v6); // sono = per come ho implementato la equals
+        Vehicle v7 = v6.clone();
 
+
+        Vehicle vehicle1 = new Vehicle(10);
+        Vehicle vehicle2 = new Vehicle(20);
+        Vehicle vehicle3 = new Vehicle(20);
+        Vehicle vehicle4 = new Vehicle(30);
+
+        Set set = new HashSet<>();
+        set.add(vehicle1);
+        set.add(vehicle2);
+        set.add(vehicle4);
+        set.add(vehicle3);
+        // metodo brutto
+        Iterator<Vehicle> it = set.iterator();
+        while(it.hasNext()){
+            Vehicle v = it.next();
+            System.out.println(v.getSpeed());
+        }
+        // metodo bello per collezioni:
+        for(Object v : set){
+            System.out.println(v.toString());
+        }
+        /*
         System.out.println(v1.compareTo(v4));
         System.out.println(c.compareTo(v3));
         System.out.println(v3.compareTo(c));
@@ -185,7 +203,7 @@ public class Main {
         for(Vehicle v:set){
             System.out.println(v.getClass().getName() + " "+ v.getSpeed());
         }
-
-
+         */
     }
+
 }

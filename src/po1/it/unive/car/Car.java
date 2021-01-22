@@ -188,6 +188,21 @@ public class Car extends Vehicle {
         else return false;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Car car = (Car) o;
+        return Double.compare(car.fuel, fuel) == 0 &&
+                carId == car.carId &&
+                Objects.equals(fuelType, car.fuelType);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), fuel, fuelType, carId);
+    }
     // Es.2.15
     /**
      * Change speed setting it to a new value v
