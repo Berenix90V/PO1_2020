@@ -258,7 +258,40 @@ public class Main {
         String e = c.substring(0, 3); //"abc"
         String[] f = c.split("d"); //{"abc", "ef"}
     }
-    public static void main(String[] args) throws Exception {
+    public static void primitivetypes(String[] args) throws Exception {
+        boolean b = true;
+        byte z = 1;
+        int i = 123;
+        double d = 1.23;
+        float f = 1.23F;
+        //f = d; non si può: f float (32) <- d double (62)
+        //z = i; non si può: z byte (8) <- i int (16)
+        i = z; // i int (32) <- z byte (8)
+        d = f; // d double (64) <- f float (32)
+        Object o = 5; // lo accetta
+        // riconosce automaticamente che l'obj oi è un int
+        Integer oi = 2;
+        int in = oi;
+    }
+    public static void main(String[] args) throws NegativeSpeedException {
+        Vehicle v = null;
+        /*
+        // NullPointer Exception
+        v.getSpeed();
+        // ArithmeticException: / by zero
+        int i = 10/0;
+        // ArrayIndexOutOfBoundException
+        Vehicle[] arr = new Vehicle[1];
+        v = arr[2];
+        */
+        //Anche questa mi dà un nullpointer:
+        /*
+        Car c = new Car(0, null, 10);
+        c.accelerate(10);
+        */
+        FuelType diesel = FuelType.createFuelType("diesel", 1.3, 0.03);
+        Car c = new Car(0, diesel, 10);
+        c.accelerate(-10);
 
     }
 

@@ -1,5 +1,6 @@
 package po1.it.unive.car;
 
+import po1.it.unive.vehicle.NegativeSpeedException;
 import po1.it.unive.vehicle.Vehicle;
 import po1.it.unive.car.fuel.FuelTank;
 import po1.it.unive.car.fuel.FuelType;
@@ -162,7 +163,7 @@ public class Car extends Vehicle {
      *
      * @param dv amount of speed to be added
      */
-    final public void accelerate(double dv) {
+    final public void accelerate(double dv) throws NegativeSpeedException {
         double consumption = dv*fuelType.getFUEL_CONS();
         if(consumption <= fuel){
             super.accelerate(dv);
