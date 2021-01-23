@@ -163,6 +163,7 @@ public class Car extends Vehicle {
      *
      * @param dv amount of speed to be added
      */
+    @Override
     final public void accelerate(double dv) throws NegativeSpeedException {
         double consumption = dv*fuelType.getFUEL_CONS();
         if(consumption <= fuel){
@@ -205,14 +206,14 @@ public class Car extends Vehicle {
         return Objects.hash(super.hashCode(), fuel, fuelType, carId);
     }
     // Es.2.15
-    /**
-     * Change speed setting it to a new value v
-     * @param v speed to be set
-     */
+    /*
+
     void changeSpeed(double v) {
         double a = v-super.getSpeed();
         this.accelerate(a);
     }
+     */
+
 
     @Override
     public String toString() {

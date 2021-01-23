@@ -55,7 +55,7 @@ public class Main {
     }
 
     // vari main usati finora in classe
-    public static void cars(){
+    public static void cars() throws NegativeSpeedException {
         FuelType diesel = FuelType.createFuelType("diesel", 1.3, 0.3);
         FuelType benzina = FuelType.createFuelType("benzina", 1.6, 0.9);
         FuelTank myTank = new FuelTank(diesel, 10);
@@ -88,7 +88,7 @@ public class Main {
         Rhombus rhom = new Rhombus(3,4, 5);
         System.out.println(getStringArea(rhom));
     }
-    public static void racing(){
+    public static void racing() throws NegativeSpeedException {
         FuelType diesel = FuelType.createFuelType("diesel", 1.3, 0.3);
         FuelTank tank1 = new FuelTank(diesel, 20);
         Vehicle v = new Car(0, diesel, 10);
@@ -130,7 +130,7 @@ public class Main {
         Truck truck = new Truck(0, diesel, 20);
         LoadableUnloadable obj = truck;
     }
-    public static void dispatch(){
+    public static void dispatch() throws NegativeSpeedException {
         FuelType diesel = FuelType.createFuelType("diesel", 1.3, 0.03);
         Vehicle v1 = new Car(20, diesel,300);
         Vehicle v4 = new Car(10, diesel,100);
@@ -273,7 +273,7 @@ public class Main {
         Integer oi = 2;
         int in = oi;
     }
-    public static void main(String[] args) throws NegativeSpeedException {
+    public static void exceptions(String[] args) throws NegativeSpeedException {
         Vehicle v = null;
         /*
         // NullPointer Exception
@@ -293,6 +293,17 @@ public class Main {
         Car c = new Car(0, diesel, 10);
         c.accelerate(-10);
 
+    }
+    public static void main(String[] args) throws NegativeSpeedException {
+        // Vedere l'eccezione con messaggio:
+        FuelType diesel = FuelType.createFuelType("diesel", 1.3, 0.03);
+        Car c = new Car(0, diesel, 10);
+        //c.accelerate(-10);
+
+        Car v4 = new Car(30, diesel, 20);
+        Truck v2 = new Truck(20, diesel, 20);
+        Racing race = new Racing();
+        race.race(v4, v2, 100);
     }
 
 }

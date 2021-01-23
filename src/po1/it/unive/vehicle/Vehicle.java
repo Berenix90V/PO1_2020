@@ -50,11 +50,12 @@ public class Vehicle implements Comparable <Vehicle> {
     /**
      * Modify speed adding a given dv
      * @param dv speed to be added to speed field
+     * @throws NegativeSpeedException the given acceleration is negative
      */
     public void accelerate(double dv) throws NegativeSpeedException{
         if(dv>=0)
             this.speed = dv;
-        else throw new NegativeSpeedException();
+        else throw new NegativeSpeedException(dv);
     }
 
     /**

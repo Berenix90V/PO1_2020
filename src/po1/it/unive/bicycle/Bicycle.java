@@ -1,5 +1,6 @@
 package po1.it.unive.bicycle;
 
+import po1.it.unive.vehicle.NegativeSpeedException;
 import po1.it.unive.vehicle.Vehicle;
 
 public class Bicycle extends Vehicle{
@@ -25,7 +26,7 @@ public class Bicycle extends Vehicle{
     public double getRearTirePressure(){
         return rearTirePressure;
     }
-    public void accelerate(double dv){
+    public void accelerate(double dv) throws NegativeSpeedException {
         super.accelerate(dv);
     }
 }
