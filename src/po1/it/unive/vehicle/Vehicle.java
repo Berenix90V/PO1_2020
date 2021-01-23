@@ -53,6 +53,7 @@ public class Vehicle implements Comparable <Vehicle> {
      * @throws NegativeSpeedException the given acceleration is negative
      */
     public void accelerate(double dv) throws NegativeSpeedException{
+        assert dv >=0;
         if(dv>=0)
             this.speed = dv;
         else throw new NegativeSpeedException(dv);

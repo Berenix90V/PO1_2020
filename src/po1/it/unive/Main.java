@@ -294,7 +294,7 @@ public class Main {
         c.accelerate(-10);
 
     }
-    public static void main(String[] args) throws NegativeSpeedException {
+    public static void trycatch(String[] args) throws NegativeSpeedException {
         // Vedere l'eccezione con messaggio:
         FuelType diesel = FuelType.createFuelType("diesel", 1.3, 0.03);
         Car c = new Car(0, diesel, 10);
@@ -305,5 +305,94 @@ public class Main {
         Racing race = new Racing();
         race.race(v4, v2, 100);
     }
+    public static void trycatch2(String[] args) throws NegativeSpeedException {
+        /* Mi ritorna try catch e finally
+        try{
+            System.out.println("try body");
+            throw new NegativeSpeedException(-10);
+        } catch (Throwable e){
+            System.out.println("catch body");
+        }
+        finally{
+            System.out.println("finally body");
+        }
+
+         */
+        // lancia l'eccezione ad args, va a finally e poi rilancia l'eccezione outofbound
+        /*
+        try{
+            System.out.println("try body");
+            String s = args[1000];          // al massimo ho un argomento, è l'array del main
+            System.out.println("try body2");
+            throw new NegativeSpeedException(-10);
+        } catch (NegativeSpeedException e){
+            System.out.println("catch body");
+        }
+        finally{
+            System.out.println("finally body");
+        }
+         */
+        // try con più catch: mi prende il primo che viene lanciato: try, aioobe, finally
+        /*
+        try{
+            System.out.println("try body");
+            String s = args[1000];          // al massimo ho un argomento, è l'array del main
+            System.out.println("try body2");
+            throw new NegativeSpeedException(-10);
+        } catch (NegativeSpeedException e){
+            System.out.println("catch nse body");
+        } catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("catch aioobe body");
+        }
+        finally{
+            System.out.println("finally body");
+        }
+
+         */
+        // L'aioobe va fuori perchè è dentro al catch e non al try, non viene catturata
+        /*
+        try{
+            System.out.println("try body");
+            throw new NegativeSpeedException(-10);
+        } catch (NegativeSpeedException e){
+            System.out.println("catch nse body");
+            String s = args[1000];
+        } catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("catch aioobe body");
+        }
+        finally{
+            System.out.println("finally body");
+        }
+         */
+        // devo farla annidata per prenderla: try, nse, aioobe2, finally
+        /*
+        try{
+            System.out.println("try body");
+            throw new NegativeSpeedException(-10);
+        } catch (NegativeSpeedException e){
+            try{
+                System.out.println("catch nse body");
+                String s = args[1000];
+            } catch(ArrayIndexOutOfBoundsException e1){
+                System.out.println("catch aioobe2 body");
+            }
+
+        } catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("catch aioobe body");
+        }
+        finally{
+            System.out.println("finally body");
+        }
+        */
+        FuelType diesel = FuelType.createFuelType("diesel", 1.3, 0.03);
+        Car v4 = new Car(30, diesel, 20);
+        Truck v2 = new Truck(20, diesel, 20);
+        Racing race = new Racing();
+        race.race(v4, v2, 100);
+    }
+    public static void main(String[] args) throws NegativeSpeedException {
+
+    }
+
 
 }

@@ -3,36 +3,7 @@ package po1.it.unive.vehicle;
 import po1.it.unive.car.Car;
 
 public class Racing {
-    /*
-    static public int race(Vehicle v1, Vehicle v2, double length) {
-        v1.fullBreak();
-        v2.fullBreak();
 
-        double distanceV1 = 0, distanceV2=0;
-        while(true) {
-            distanceV1 += v1.getSpeed();
-            distanceV2 += v2.getSpeed();
-            if(distanceV1 >= length || distanceV2 >= length) {
-                if(distanceV1 > distanceV2) return 1;
-                else return 2;
-            }
-            try {
-                v1.accelerate((Math.random()-0.3)*10);
-            } catch (NegativeSpeedException e) {
-                //e.printStackTrace();
-                System.err.println("Unexpected negative speed when accelerated vehicle 1: " + e.getSpeed());
-            }
-
-            try {
-                v2.accelerate((Math.random()-0.3)*10);
-            } catch (NegativeSpeedException e) {
-                //e.printStackTrace();
-                System.err.println("Unexpected negative speed when accelerated vehicle 2: " + e.getSpeed());
-            }
-
-        }
-
-     */
     // altro modo di implementare è racchiudere tutto nel blocco try catch
 
     /**
@@ -62,8 +33,8 @@ public class Racing {
 
             }
         } catch(NegativeSpeedException e){
-            System.err.println("A negative exception happened");
-            return -1;
+            //System.err.println("A negative exception happened");
+            throw new RuntimeException("Random number generation gave back a neg value: "+ e.getSpeed()/10, e);
         }
         finally{
             v1.fullBreak();

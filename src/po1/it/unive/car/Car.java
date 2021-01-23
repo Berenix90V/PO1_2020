@@ -152,7 +152,7 @@ public class Car extends Vehicle {
         }
 
     }
-
+    @Deprecated (since =  "2.0")
     public void refuel(double amount)
     {
         fuel += amount;
