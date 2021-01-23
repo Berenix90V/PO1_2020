@@ -213,6 +213,16 @@ public class Car extends Vehicle {
         this.accelerate(a);
     }
 
+    @Override
+    public String toString() {
+        return "Car{" +
+                "fuel=" + fuel +
+                ", fuelType=" + fuelType +
+                ", carId=" + carId +
+                ", speed=" + speed +
+                '}';
+    }
+
     public static void foo() {
         System.out.println("Vehicle 2");
     }

@@ -157,7 +157,7 @@ public class Main {
         v1.foo();
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void metodiobject(String[] args) throws Exception {
 
         FuelType diesel = FuelType.createFuelType("diesel", 1.3, 0.03);
         Car v1 = new Car(10, diesel,10);
@@ -191,19 +191,75 @@ public class Main {
         for(Object v : set){
             System.out.println(v.toString());
         }
-        /*
-        System.out.println(v1.compareTo(v4));
-        System.out.println(c.compareTo(v3));
-        System.out.println(v3.compareTo(c));
 
-        TreeSet<Vehicle> set = new TreeSet <Vehicle>();
-        set.add(v1);
-        set.add(v2);
-        set.add(c);
-        for(Vehicle v:set){
-            System.out.println(v.getClass().getName() + " "+ v.getSpeed());
+    }
+    public static void collections(String[] args) throws Exception {
+        FuelType diesel = FuelType.createFuelType("diesel", 1.3, 0.03);
+        Vehicle vehicle1 = new Vehicle(10);
+        Vehicle vehicle2 = new Vehicle(20);
+        Vehicle vehicle3 = new Vehicle(20);
+        Vehicle vehicle4 = new Vehicle(30);
+        Set<Vehicle> set = new HashSet<>();
+        set.add(vehicle1);
+        set.add(vehicle2);
+        set.add(vehicle4);
+        set.add(vehicle3);
+
+        // metodo bello per collezioni:
+        for(Vehicle v : set){
+            System.out.println(v.getSpeed());
         }
-         */
+        System.out.println(vehicle1.compareTo(vehicle4)); // v1<v4
+        System.out.println(vehicle4.compareTo(vehicle1)); // v4>v1
+        System.out.println(vehicle2.compareTo(vehicle3)); // v2==v3
+        Car c = new Car(30, diesel, 20);
+        System.out.println(c.compareTo(vehicle2)); // c
+        System.out.println(vehicle2.compareTo(c)); //
+
+        Vehicle vehicle5 = new Vehicle(40);
+        TreeSet <Vehicle> set2 = new TreeSet<Vehicle>();
+        set2.add(vehicle1);
+        set2.add(vehicle4);
+        set2.add(vehicle2);
+        set2.add(vehicle5);
+        // se modifico uno degli elementi in un secondo momento mi ritrovo con 2
+        // veicoli alla stessa v
+        vehicle5.setSpeed(20);
+        // stampa in modo ordinato
+        for(Vehicle v : set2)
+            System.out.println(v.getClass().getName()+" "+v.getSpeed());
+    }
+    public static void stringhe(String[] args) throws Exception {
+        String s = "abc";
+        int n = 123;
+        Object o = "def";
+        FuelType diesel = FuelType.createFuelType("diesel", 1.3, 0.03);
+
+        System.out.println(s.charAt(1));
+        String s1 = s.concat("def");
+        String s2 = s+"def";
+
+
+        Vehicle v1 = new Vehicle(10);
+        Car v4 =  new Car(30, diesel, 20);
+        Truck v2 = new Truck(20, diesel, 20);
+        Vehicle v5 = new Vehicle(40);
+        String sv1 = v1.toString();
+        String sv2 = v2.toString();
+        String sv4 = v4.toString();
+        String sv5 = v5.toString();
+        System.out.println(sv1);
+
+        String a = "abc";
+        String a1 = new String("abc");//same of a
+        String b = a + "def"; //"abcdef"
+        String c = a.concat("def"); //"abcdef"
+        String d = c.replace('a', 'g'); //"gbcdef"
+        String e = c.substring(0, 3); //"abc"
+        String[] f = c.split("d"); //{"abc", "ef"}
+    }
+    public static void main(String[] args) throws Exception {
+
     }
 
 }

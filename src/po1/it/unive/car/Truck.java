@@ -69,4 +69,12 @@ import po1.it.unive.vehicle.LoadableUnloadable;
         }
         else load = 0;
     }
+
+    @Override
+    public String toString() {
+        return "Truck{" +
+                "load=" + load +
+                ", speed=" + speed +
+                '}';
+    }
 }

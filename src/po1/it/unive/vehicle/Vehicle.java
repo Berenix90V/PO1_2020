@@ -73,7 +73,8 @@ public class Vehicle implements Comparable <Vehicle> {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true; // se puntano allo stesso obj
-        if (o == null ) return false;
+        if (o == null || getClass()!= o.getClass() )
+            return false; // sono 2 veicoli diversi
         if(!(o instanceof Vehicle))
             return false;           // sono 2 tipi diversi
         Vehicle vehicle = (Vehicle) o;
@@ -93,10 +94,18 @@ public class Vehicle implements Comparable <Vehicle> {
     @Override
     public int compareTo(Vehicle o) {
         if (this.equals(o)) return 0;
-        if(o==null || getClass()!= o.getClass())
-            return 1;
-        if(o instanceof Car)
-            return 1;
+        if(o==null || getClass()!= o.getClass()) {
+            if (o instanceof Car)
+                return 1;
+            return -1; // sono 2 veicoli diversi, in realtà andrebbe fatta una scala di tipi
+        }
         return (int) (this.speed-o.speed);
+    }
+
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "speed=" + speed +
+                '}';
     }
 }
