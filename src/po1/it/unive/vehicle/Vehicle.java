@@ -8,7 +8,7 @@ import java.util.Objects;
  * Class @code Vehicle represents a vehicle
  */
 public class Vehicle implements Comparable <Vehicle> {
-    protected double speed;
+    @Speed(forward = true) double speed;
     // Constructors
     /**
      * It initializes the vehicle with a given speed
@@ -32,6 +32,7 @@ public class Vehicle implements Comparable <Vehicle> {
      *
      * @return speed
      */
+    @Speed(forward = true)
     public double getSpeed() {
         return speed;
     }
@@ -41,7 +42,7 @@ public class Vehicle implements Comparable <Vehicle> {
      *
      * @param speed speed to be set
      */
-    public void setSpeed(double speed) {
+    public void setSpeed(@Speed(forward = true) double speed) {
         this.speed = speed;
     }
 
@@ -52,7 +53,7 @@ public class Vehicle implements Comparable <Vehicle> {
      * @param dv speed to be added to speed field
      * @throws NegativeSpeedException the given acceleration is negative
      */
-    public void accelerate(double dv) throws NegativeSpeedException{
+    public void accelerate(@Speed(forward = true) double dv) throws NegativeSpeedException{
         assert dv >=0;
         if(dv>=0)
             this.speed = dv;
@@ -83,6 +84,7 @@ public class Vehicle implements Comparable <Vehicle> {
     }
 
     @Override
+    @SuppressWarnings("all")
     public Vehicle clone() throws CloneNotSupportedException {
         return new Vehicle(this.speed);
     }

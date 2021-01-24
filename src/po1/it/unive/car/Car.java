@@ -221,7 +221,7 @@ public class Car extends Vehicle {
                 "fuel=" + fuel +
                 ", fuelType=" + fuelType +
                 ", carId=" + carId +
-                ", speed=" + speed +
+                ", speed=" + getSpeed() +
                 '}';
     }
 

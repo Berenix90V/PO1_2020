@@ -74,7 +74,7 @@ import po1.it.unive.vehicle.LoadableUnloadable;
     public String toString() {
         return "Truck{" +
                 "load=" + load +
-                ", speed=" + speed +
+                ", speed=" + getSpeed() +
                 '}';
     }
 }
