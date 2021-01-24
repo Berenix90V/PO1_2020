@@ -1,24 +1,15 @@
 package po1.it.unive.car.fuel;
 
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 import java.util.HashMap;
 import java.util.Map;
-@XmlRootElement
-@XmlType
+
 public class FuelType{
-    @XmlElement
     private String name;
-    @XmlAttribute
     private final double costPerLiter;
-    @XmlAttribute
     private final double FUEL_CONS;
-    @XmlAttribute
     private static int numberOfTypes = 0;
-    @XmlAttribute
     private final int id;
+
 
     /**
      * Creates and returns a fuel type. If a fuel type with the given name was previously created,

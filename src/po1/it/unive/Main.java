@@ -13,9 +13,6 @@ import po1.it.unive.polygon.Rectangle;
 import po1.it.unive.polygon.Rhombus;
 import po1.it.unive.polygon.Square;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -396,10 +393,14 @@ public class Main {
         Racing race = new Racing();
         race.race(v4, v2, 100);
     }
-    public static void main(String[] args) throws JAXBException {
+    public static void main(String[] args) throws IOException {
+
         FuelType diesel = FuelType.createFuelType("diesel", 1.3, 0.03);
-        Main.marshal(diesel);
+        //Main.marshal(diesel);
+
+        //FuelType readfuel = Main.unmarshall();
     }
+    /*
     static void marshal(FuelType fuelType) throws JAXBException {
         JAXBContext context = JAXBContext.newInstance(FuelType.class);
         Marshaller mar= context.createMarshaller();
@@ -410,6 +411,7 @@ public class Main {
         return (FuelType) context.createUnmarshaller()
                 .unmarshal(new FileReader("./fuelType.xml"));
     }
+     */
 
 
 }
